@@ -1,50 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><!DOCTYPE html>
-<html>
 <head>
-    <title>Aviation AI Blog</title>
-    <!-- Link to CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Aviation Hub | Next-Gen Aerospace Tech</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Your content here -->
-</body>
-</html>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GM73 | Future of Flight</title>
-    <!-- Futuristic Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
-    <!-- 3D Libraries -->
-    <script src="assets/js/three.min.js"></script>
-    <script src="assets/js/GLTFLoader.js"></script>
-    <style>
-        /* CSS will go in styles.css */
-    </style>
-</head>
-<body>
-    <!-- Your content here -->
-
-    <!-- Link to JavaScript -->
-    <script src="script.js"></script>
- <body>
-    <!-- 3D COCKPIT VIEWER -->
-    <div id="cockpit-3d"></div>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
     
-    <!-- VOICE COMMAND UI -->
-    <button id="voice-command" class="pulse">
-        <i class="fas fa-microphone-alt"></i> AI Copilot
+    <!-- AR Trigger Button -->
+    <button id="arButton" class="ar-btn">
+        <i class="fas fa-vr-cardboard"></i> View in AR
     </button>
-    
-    <!-- MAIN CONTENT -->
-    <main class="glass">
-        <h1 id="typewriter"></h1>
-        <section id="ar-preview">
-            <!-- WebXR AR content will load here -->
-        </section>
-    </main>
 
+    <!-- Main Header -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="glitch" data-text="AI AVIATION HUB">AI AVIATION HUB</h1>
+            <p class="typewriter">Exploring the future of autonomous flight and aerospace innovation</p>
+            <div class="voice-search">
+                <button id="voiceBtn"><i class="fas fa-microphone"></i></button>
+                <span id="voiceStatus">Ready for voice commands</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- AI Assistant -->
+    <div class="ai-assistant">
+        <div class="ai-header">
+            <h3><i class="fas fa-robot"></i> Aviation AI Assistant</h3>
+            <button id="minimizeAi">−</button>
+        </div>
+        <div class="ai-chat" id="aiChat">
+            <div class="ai-message">Hello! I'm your aviation AI assistant. Ask me anything about aerospace technology, flight data, or industry trends.</div>
+        </div>
+        <div class="ai-input">
+            <input type="text" id="aiQuery" placeholder="Ask about aviation...">
+            <button id="sendAi"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Flight Tracker -->
+    <section class="tracker-section">
+        <h2><i class="fas fa-plane"></i> Live Flight Tracker</h2>
+        <div id="flightMap"></div>
+        <div class="flight-controls">
+            <button id="refreshFlights"><i class="fas fa-sync-alt"></i> Refresh</button>
+            <div class="flight-filter">
+                <label for="altitudeFilter">Altitude:</label>
+                <input type="range" id="altitudeFilter" min="0" max="40000" value="40000">
+                <span id="altitudeValue">40,000 ft</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Model Viewer -->
+    <section class="model-section">
+        <h2><i class="fas fa-space-shuttle"></i> Aircraft Explorer</h2>
+        <div id="modelContainer"></div>
+        <div class="model-controls">
+            <button id="prevModel"><i class="fas fa-chevron-left"></i></button>
+            <span id="modelName">Boeing 787 Dreamliner</span>
+            <button id="nextModel"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Aviation News -->
+    <section class="news-section">
+        <h2><i class="fas fa-newspaper"></i> Latest Aviation News</h2>
+        <div class="news-grid" id="newsGrid">
+            <!-- Filled by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Data Visualization -->
+    <section class="data-section">
+        <h2><i class="fas fa-chart-line"></i> Aviation Analytics</h2>
+        <div class="chart-container">
+            <canvas id="flightChart"></canvas>
+        </div>
+    </section>
+
+    <!-- Theme Toggle -->
+    <button id="themeToggle" class="theme-btn">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
-<script src="script.js"></script> </body>
+</body>
 </html>
