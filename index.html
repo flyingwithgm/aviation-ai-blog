@@ -3,142 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Aviation 2025 | Next-Gen Aerospace Tech</title>
+    <title>AI Aviation Hub | GM73 - The Flying Engineer</title>
+    <meta name="author" content="George Nuyekpe">
     
-    <!-- Quantum Performance Boosters -->
-    <link rel="preload" href="https://cdn.webgpu.io/latest/webgpu.min.js" as="script">
-    <link rel="preconnect" href="https://api.aviationstack.com">
+    <!-- Preload Resources -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="script.js" as="script">
     
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Leaflet Map -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css">
-    
-    <!-- Main CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
     
-    <!-- Quantum CSS -->
-    <style>
-      :root {
-        scroll-behavior: smooth;
-        view-transition-name: root;
-        --quantum-blue: #00f0ff;
-        --neural-purple: #b400ff;
-        --hologram-pink: #ff00f0;
-      }
-      
-      @layer ultra-performance {
-        html {
-          contain: strict;
-          content-visibility: auto;
-        }
-      }
-    </style>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Particle Background -->
     <div id="particles-js"></div>
     
-    <!-- AR Trigger Button -->
-    <button id="arButton" class="ar-btn">
-        <i class="fas fa-vr-cardboard"></i> HOLO DECK
-    </button>
-
-    <!-- 3D Animated Header -->
-    <header class="hero">
-        <div class="hero-content">
-            <h1 class="glitch" data-text="AVIATION 2025">AVIATION 2025</h1>
-            <p class="typewriter">Where AI meets hypersonic futures</p>
-            <div class="voice-search">
-                <button id="voiceBtn"><i class="fas fa-microphone"></i></button>
-                <span id="voiceStatus">NEURAL VOICE ACTIVE</span>
-            </div>
-        </div>
-        <canvas id="3dCanvas"></canvas>
-    </header>
-
-    <!-- Quantum Flight Tracker -->
-    <section class="quantum-tracker">
-        <h2><i class="fas fa-satellite"></i> QUANTUM FLIGHT TRACKER</h2>
-        <webgpu-canvas id="flightCanvas"></webgpu-canvas>
-        <div class="telemetry">
-            <div class="telemetry-item">
-                <span>ACTIVE FLIGHTS</span>
-                <span id="liveCount">LOADING...</span>
-            </div>
-            <div class="telemetry-item">
-                <span>AVG SPEED</span>
-                <span id="avgSpeed">-</span>
-            </div>
-            <button id="launchSimulator" class="quantum-btn">
-                <i class="fas fa-rocket"></i> HYPERSPACE SIM
-            </button>
-        </div>
-    </section>
-
-    <!-- 2025 AI News Network -->
-    <section class="ai-news">
-        <h2><i class="fas fa-brain"></i> 2025 AI NEWS NETWORK</h2>
-        <div class="news-grid" id="news2025">
-            <!-- Dynamically loaded -->
-        </div>
-        <button id="refreshNews" class="quantum-btn">
-            <i class="fas fa-sync-alt"></i> LIVE UPDATE
-        </button>
-    </section>
-
-    <!-- Neural AI Assistant -->
-    <div class="neural-assistant">
-        <div class="neural-header">
-            <h3><i class="fas fa-atom"></i> NEURAL AVIATION GPT-5</h3>
-            <div class="neural-mode">
-                <span>QUANTUM MODE</span>
-                <label class="switch">
-                    <input type="checkbox" id="quantumMode" checked>
-                    <span class="slider"></span>
-                </label>
-            </div>
-        </div>
-        <div class="neural-chat" id="aiDialog"></div>
-        <div class="neural-input">
-            <input type="text" id="aiQuery" placeholder="Ask about anti-gravity or plasma stealth...">
-            <button id="neuralSubmit"><i class="fas fa-paper-plane"></i></button>
-            <button id="neuralVoice"><i class="fas fa-microphone"></i></button>
-        </div>
-    </div>
-
-    <!-- Hypersonic Simulator (Hidden by default) -->
-    <div id="hypersonicSim" class="hypersonic-simulator">
-        <div class="simulator-header">
-            <h3><i class="fas fa-wind"></i> MACH 7 SIMULATOR</h3>
-            <button id="closeSimulator"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="simulator-display">
-            <canvas id="simulatorCanvas"></canvas>
-            <div class="simulator-data">
-                <div class="data-item">
-                    <span>VELOCITY</span>
-                    <span id="simVelocity">0 km/s</span>
+    <!-- 3D Scene Container -->
+    <div id="3d-container"></div>
+    
+    <!-- Main Content -->
+    <main>
+        <header class="hero">
+            <h1 class="glitch" data-text="AI AVIATION HUB">AI AVIATION HUB</h1>
+            <p class="typewriter">By <span class="gm73">GM73</span> | The Flying Engineer</p>
+        </header>
+        
+        <section class="content">
+            <article class="card">
+                <h2><i class="fas fa-plane"></i> Flight Tracker</h2>
+                <div id="flight-map"></div>
+            </article>
+            
+            <article class="card">
+                <h2><i class="fas fa-robot"></i> AI Assistant</h2>
+                <div id="ai-chat"></div>
+                <div class="ai-input">
+                    <input type="text" id="ai-query" placeholder="Ask about aviation...">
+                    <button id="ai-send"><i class="fas fa-paper-plane"></i></button>
                 </div>
-                <div class="data-item">
-                    <span>SURFACE TEMP</span>
-                    <span id="simTemp">-50°C</span>
-                </div>
-            </div>
+            </article>
+        </section>
+    </main>
+    
+    <!-- GM73 Footer -->
+    <footer>
+        <div class="signature">
+            <div>© 2025 George Nuyekpe</div>
+            <div class="gm73-tag">GM73 | The Flying Engineer</div>
+            <div class="tagline">Flying with Code and Wings</div>
         </div>
-        <div class="simulator-controls">
-            <button id="increaseThrottle"><i class="fas fa-arrow-up"></i> THROTTLE</button>
-            <button id="decreaseThrottle"><i class="fas fa-arrow-down"></i> BRAKE</button>
-        </div>
-    </div>
-
-    <!-- Scripts -->
+    </footer>
+    
+    <!-- JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script src="https://cdn.webgpu.io/latest/webgpu.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
