@@ -1,20 +1,31 @@
-/* ===== BASE STYLES ===== */
+/* === QUANTUM CORE STYLES === */
 :root {
     --primary-dark: #0a192f;
-    --primary-light: #ccd6f6;
-    --accent: #00f0ff;
-    --card-bg: rgba(10, 25, 47, 0.8);
+    --primary-light: #f8f9fa;
+    --quantum-accent: #00f0ff;
+    --neural-accent: #b400ff;
+    --hologram-accent: #ff00f0;
+    --text-dark: #ccd6f6;
+    --text-light: #495057;
+    --card-bg: rgba(0, 240, 255, 0.05);
 }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--primary-dark);
+    color: var(--text-dark);
     margin: 0;
     padding: 0;
-    color: var(--primary-light);
     overflow-x: hidden;
+    transition: all 0.5s ease;
 }
 
-/* ===== PARTICLES ===== */
+body.light-mode {
+    background-color: var(--primary-light);
+    color: var(--text-light);
+}
+
+/* === HOLOGRAPHIC PARTICLE BACKGROUND === */
 #particles-js {
     position: fixed;
     width: 100%;
@@ -22,66 +33,578 @@ body {
     top: 0;
     left: 0;
     z-index: -1;
+    opacity: 0.5;
 }
 
-/* ===== 3D CONTAINER ===== */
-#3d-container {
-    position: fixed;
+/* === GLITCH EFFECT HEADER === */
+.glitch {
+    position: relative;
+    font-size: 5rem;
+    font-weight: 800;
+    color: var(--quantum-accent);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+.glitch::before {
+    left: 3px;
+    text-shadow: -3px 0 var(--hologram-accent);
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -3px;
+    text-shadow: -3px 0 var(--neural-accent);
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% { clip: rect(31px, 9999px, 94px, 0); }
+    10% { clip: rect(112px, 9999px, 76px, 0); }
+    20% { clip: rect(85px, 9999px, 77px, 0); }
+    30% { clip: rect(27px, 9999px, 97px, 0); }
+    40% { clip: rect(64px, 9999px, 98px, 0); }
+    50% { clip: rect(61px, 9999px, 85px, 0); }
+    60% { clip: rect(99px, 9999px, 114px, 0); }
+    70% { clip: rect(34px, 9999px, 115px, 0); }
+    80% { clip: rect(98px, 9999px, 129px, 0); }
+    90% { clip: rect(43px, 9999px, 96px, 0); }
+    100% { clip: rect(82px, 9999px, 64px, 0); }
+}
+
+/* === TYPEWRITER EFFECT === */
+.typewriter {
+    overflow: hidden;
+    border-right: 3px solid var(--quantum-accent);
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 3px;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    text-shadow: 0 0 5px rgba(0, 240, 255, 0.3);
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--quantum-accent); }
+}
+
+/* === QUANTUM FLIGHT TRACKER === */
+.quantum-tracker {
+    position: relative;
+    height: 600px;
+    width: 90%;
+    margin: 40px auto;
+    border: 2px solid rgba(0, 240, 255, 0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.1);
+    contain: strict;
+}
+
+webgpu-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: #000;
+}
+
+.telemetry {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    background: rgba(10, 25, 47, 0.8);
+    padding: 20px;
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--quantum-accent);
+    z-index: 10;
+}
+
+.telemetry-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.telemetry-item span:first-child {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.telemetry-item span:last-child {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--quantum-accent);
+    margin-top: 5px;
+}
+
+.quantum-btn {
+    background: linear-gradient(135deg, var(--quantum-accent), var(--neural-accent));
+    color: var(--primary-dark);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 240, 255, 0.3);
+}
+
+.quantum-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 240, 255, 0.5);
+}
+
+/* === 2025 AI NEWS NETWORK === */
+.ai-news {
+    width: 90%;
+    margin: 60px auto;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.news-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 240, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.news-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(0, 240, 255, 0.05), 
+        rgba(180, 0, 255, 0.05));
     z-index: -1;
 }
 
-/* ===== CONTENT STYLES ===== */
-.hero {
-    text-align: center;
-    padding: 5rem 1rem;
+.news-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 240, 255, 0.2);
+    border: 1px solid var(--quantum-accent);
 }
 
-.glitch {
-    position: relative;
-    font-size: 3rem;
-    color: var(--accent);
+.news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
 }
 
-.gm73 {
+.news-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    flex: 1;
+}
+
+.credibility {
+    background: rgba(0, 240, 255, 0.2);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
     font-weight: bold;
-    color: var(--accent);
-    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    color: var(--quantum-accent);
 }
 
-.card {
-    background: var(--card-bg);
-    border-radius: 15px;
-    padding: 1.5rem;
-    margin: 1rem;
+.news-card p {
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+.news-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: rgba(204, 214, 246, 0.7);
+}
+
+.news-ar {
+    background: transparent;
+    border: none;
+    color: var(--hologram-accent);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+}
+
+/* === NEURAL AI ASSISTANT === */
+.neural-assistant {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 400px;
+    background: rgba(10, 25, 47, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--neural-accent);
+    z-index: 1000;
+    contain: content;
+    transform-origin: bottom right;
+    transition: all 0.3s ease;
+}
+
+.neural-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid rgba(180, 0, 255, 0.3);
+}
+
+.neural-header h3 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--neural-accent);
+}
+
+.neural-mode {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.neural-mode span {
+    font-size: 0.9rem;
+    color: rgba(204, 214, 246, 0.7);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background: linear-gradient(90deg, var(--neural-accent), var(--hologram-accent));
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.neural-chat {
+    height: 300px;
+    overflow-y: auto;
+    padding: 20px;
+    background: rgba(10, 25, 47, 0.7);
+}
+
+.ai-message {
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    background: rgba(0, 240, 255, 0.1);
+    border-left: 3px solid var(--quantum-accent);
+}
+
+.message-content {
+    line-height: 1.6;
+}
+
+.message-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: rgba(204, 214, 246, 0.6);
+}
+
+.neural-input {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid rgba(180, 0, 255, 0.3);
+    background: rgba(10, 25, 47, 0.9);
+}
+
+.neural-input input {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 30px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    outline: none;
+}
+
+.neural-input button {
+    background: transparent;
+    border: none;
+    color: var(--neural-accent);
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.neural-input button:hover {
+    background: rgba(180, 0, 255, 0.2);
+}
+
+/* === HYPERSONIC SIMULATOR === */
+.hypersonic-simulator {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 600px;
+    background: rgba(10, 25, 47, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(255, 0, 240, 0.3);
+    border: 2px solid var(--hologram-accent);
+    z-index: 2000;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.simulator-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(255, 0, 240, 0.1);
+    border-bottom: 1px solid var(--hologram-accent);
+}
+
+.simulator-header h3 {
+    margin: 0;
+    color: var(--hologram-accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.simulator-header button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.simulator-display {
+    flex: 1;
+    position: relative;
+}
+
+#simulatorCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: #000;
+}
+
+.simulator-data {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(10, 25, 47, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
     backdrop-filter: blur(5px);
-    border: 1px solid rgba(0, 240, 255, 0.2);
+    border: 1px solid var(--hologram-accent);
 }
 
-/* ===== FOOTER ===== */
-footer {
-    text-align: center;
-    padding: 2rem;
-    margin-top: 3rem;
+.data-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.gm73-tag {
-    font-family: 'Brush Script MT', cursive;
-    font-size: 1.8rem;
-    color: var(--accent);
-    margin: 0.5rem 0;
+.data-item span:first-child {
+    font-size: 0.8rem;
+    opacity: 0.7;
 }
 
-/* ===== MOBILE RESPONSIVE ===== */
+.data-item span:last-child {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--hologram-accent);
+    margin-top: 5px;
+}
+
+.simulator-controls {
+    display: flex;
+    padding: 15px;
+    background: rgba(10, 25, 47, 0.9);
+    border-top: 1px solid var(--hologram-accent);
+}
+
+.simulator-controls button {
+    flex: 1;
+    padding: 12px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 0, 240, 0.2);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.simulator-controls button:hover {
+    background: rgba(255, 0, 240, 0.4);
+}
+
+/* === AR BUTTON === */
+.ar-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--neural-accent), var(--hologram-accent));
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(180, 0, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.ar-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(180, 0, 255, 0.5);
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 1200px) {
+    .glitch {
+        font-size: 3.5rem;
+    }
+    
+    .quantum-tracker, .ai-news {
+        width: 95%;
+    }
+}
+
 @media (max-width: 768px) {
+    .glitch {
+        font-size: 2.5rem;
+    }
+    
+    .typewriter {
+        font-size: 1.2rem;
+    }
+    
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .neural-assistant {
+        width: 90%;
+        right: 5%;
+        bottom: 20px;
+    }
+    
+    .hypersonic-simulator {
+        width: 95%;
+        height: 70vh;
+    }
+}
+
+@media (max-width: 480px) {
     .glitch {
         font-size: 2rem;
     }
     
-    .hero {
-        padding: 3rem 1rem;
+    .telemetry {
+        grid-template-columns: 1fr;
+        width: calc(100% - 40px);
     }
 }
