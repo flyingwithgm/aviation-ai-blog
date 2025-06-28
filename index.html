@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GM73 | Future of Flight</title>
+    <!-- Futuristic Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <!-- 3D Libraries -->
+    <script src="assets/js/three.min.js"></script>
+    <script src="assets/js/GLTFLoader.js"></script>
+    <style>
+        /* CSS will go in styles.css */
+    </style>
+</head>
+<body>
+    <!-- 3D COCKPIT VIEWER -->
+    <div id="cockpit-3d"></div>
+    
+    <!-- VOICE COMMAND UI -->
+    <button id="voice-command" class="pulse">
+        <i class="fas fa-microphone-alt"></i> AI Copilot
+    </button>
+    
+    <!-- MAIN CONTENT -->
+    <main class="glass">
+        <h1 id="typewriter"></h1>
+        <section id="ar-preview">
+            <!-- WebXR AR content will load here -->
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
